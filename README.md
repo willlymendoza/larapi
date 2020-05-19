@@ -4,6 +4,8 @@ This application uses the fixer.io API and works as the REST API of the applicat
 
 Every time a call is made to this app, it will check if more than an hour has passed since its last use, in which case it will update the database with the data obtained from the fixer.io API.
 
+With this, we avoid consuming the limit of calls to the fixer.io API, limiting it to at least 24 calls a day, which is approximately 745 calls per month, which is below the limit of calls per month that fixer.io provides on a free plan.
+
 # Installation requirements
 
 Fixer.io API access key (Register [here](https://fixer.io/signup/free) to get your own access key)
