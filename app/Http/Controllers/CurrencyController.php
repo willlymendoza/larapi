@@ -16,6 +16,7 @@ class CurrencyController extends Controller
         $time = time();
         $diff = $time - $firstTime;
         
+        /* If an hour has passed */
         if($diff >= 3600){
 
             DB::beginTransaction();
@@ -28,7 +29,8 @@ class CurrencyController extends Controller
     
                 $arrayCurrencies = [];
                 $arraySymbols = [];
-    
+                
+                /* Filling the currencies table with the current info from the API */
                 foreach ($getCurrencies['rates'] as $key => $value) {
                     $arrayCurrencies [] = ['name' => $key, 'value' => $value];
                     Currency::create([
@@ -37,7 +39,8 @@ class CurrencyController extends Controller
                         'time' => $time
                     ]);
                 }
-
+                
+                 /* Filling the symbols table with the current info from the API */
                 foreach ($getSymbols['symbols'] as $key => $value) {
                     $arraySymbols [] = ['name' => $key, 'value' => '('.$key.') '.$value];
                     Symbol::create([
@@ -58,6 +61,7 @@ class CurrencyController extends Controller
                 throw $th;
             }
         }else{
+            /* Getting the info from the local database */
             $currencies = Currency::select('name', 'value')->get();
             $symbols = Symbol::select('name', 'value')->get();
             return [
@@ -67,6 +71,7 @@ class CurrencyController extends Controller
         }
     }
 
+    /* Get the first row from the currencies table */
     public function getFirst(){
         $currency = Currency::select('id', 'name', 'time')->first();
         if($currency){
@@ -76,6 +81,7 @@ class CurrencyController extends Controller
         }
     }
 
+    /* Get the simbols from fixer.io API */
     public function getCurrenciesSymbols($endpoint){
         $access_key = ENV('FIXER_KEY');
 
