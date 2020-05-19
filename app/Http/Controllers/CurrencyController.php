@@ -81,7 +81,7 @@ class CurrencyController extends Controller
         }
     }
 
-    /* Get the simbols from fixer.io API */
+    /* Get the symbols from fixer.io API */
     public function getCurrenciesSymbols($endpoint){
         $access_key = ENV('FIXER_KEY');
 
