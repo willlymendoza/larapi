@@ -14,7 +14,7 @@ You need to have the following installed on your pc or server:
 
 [Composer](https://getcomposer.org/)
 
-PHP & MYSQL (you can use XAMPP [XAMPP](https://www.apachefriends.org/index.html) to install both on your pc)
+PHP & MYSQL (you can use [XAMPP](https://www.apachefriends.org/index.html) to install both on your pc)
 
 # Setting up your Database in MySql
 
